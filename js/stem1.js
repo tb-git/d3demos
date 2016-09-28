@@ -88,12 +88,12 @@ var offsetX = 175;
 
 $("#create").on("click", generate);
 
-$("#create").on("click", alert("click"));
+/*$("#create").on("click", alert("click"));*/
 
 generate();
 
 function generate() {
-  alert('generate');
+  /*alert('generate');*/
   leaves.empty();
   stems.empty();
 
