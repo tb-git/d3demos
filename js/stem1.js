@@ -93,15 +93,23 @@ $("#create").on("click", generate);
 generate();
 
 function generate() {
-  /*alert('generate');*/
+  alert('generate');
   leaves.empty();
   stems.empty();
 
   _.times(plants, createPlant);
 
+  var lineFunction = d3.svg.line()
+                           .x(function(d) { return d.x; })
+                           .y(function(d) { return d.y; })
+                          .interpolate("linear");  
+  
+  
   stems.children().each(function () {
     var _this2 = this;
 
+    
+    
     var tween = TweenMax.to(this, _.random(2, 4, true), {
       drawSVG: true,
       delay: _.random(2, true),
@@ -113,6 +121,12 @@ function generate() {
       }
     });
   });
+  
+  var lineGraph = svgContainer.append("path")
+                              .attr("d", lineFunction(stems.children))
+                             .attr("stroke", "blue")
+                              .attr("stroke-width", 2)
+                              .attr("fill", "none");
 }
 
 function createPlant() {
